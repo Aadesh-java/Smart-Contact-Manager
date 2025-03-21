@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{base::layout(~{::section})}">
+<head>
+<meta charset="UTF-8" />
+<title>Registration page</title>
+</head>
+<body>
+	<section>
+		<div class="container mt-1">
+			<div class="row">
+				<div class="col-md-6 offset-md-3">
+					<div class="my-card">
+
+						<div class="container">
+							<img class="float-left" style="width: 70px;" alt=""
+								th:src="@{/image/register.png}">
+						</div>
+
+						<h1 class="text-center text-dark mr-5">Register here !!</h1>
+
+						<form novalidate th:action="@{/register}" method="post">
+
+							<div class="error text-center mr-5">
+								<h5 th:text="${msg}"></h5>
+							</div>
+
+							<div class="success text-center mr-5">
+								<h5 th:text="${msg1}"></h5>
+							</div>
+
+							<div class="form-group mt-5">
+								<label for="name_field">Name</label> <input type="text"
+									class="form-control"
+									th:classappend="${#fields.hasErrors('name') ? 'is-invalid':''}"
+									id="name_field" name="name" aria-describedby="emailHelp"
+									placeholder="Enter Your Name">
+
+								<div class="invalid-feedback"
+									th:each="e : ${#fields.errors('name')}" th:text="${e}">username
+									cannot be blank</div>
+							</div>
+
+							<div class="form-group">
+								<label for="email_field">E-mail</label> <input type="email"
+									class="form-control" id="email_field" name="email"
+									aria-describedby="emailHelp" placeholder="Enter Your Email"
+									required="required">
+							</div>
+
+							<div class="form-group">
+								<label for="password_field">Password</label> <input
+									type="password" class="form-control" id="password_field"
+									name="password" aria-describedby="emailHelp"
+									placeholder="Your password" required="required">
+							</div>
+
+							<div class="form-group">
+								<textarea rows="4" class="form-control" name="description"
+									placeholder="Tell me something about yourself"></textarea>
+							</div>
+
+							<div class="form-group form-check">
+								<input type="checkbox" name="agreement"> <label
+									for="agreement">Accept Terms and Conditions</label>
+							</div>
+
+							<div class="container1 text-center">
+								<button class="btn bg-primary text-white btn-block"
+									type="submit">Register</button>
+								<button class="btn btn-danger text-white btn-block" type="reset">Reset</button>
+							</div>
+
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+	</section>
+</body>
+</html>

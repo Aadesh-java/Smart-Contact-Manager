@@ -1,0 +1,1 @@
+console.log("this is a external script file")
